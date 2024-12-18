@@ -1,3 +1,5 @@
+PER UNA CORRETTA COMPILAZIONE DELLA STRATEGIA MAIN.PY
+
 1. Visione d’Insieme e Obiettivo della Strategia
 La strategia mira a costruire un portafoglio azionario solido e dinamico, capace di adattarsi ai differenti regimi di mercato. Per raggiungere questo obiettivo, il processo inizia con la comprensione del contesto macroeconomico globale, prosegue nella scelta dei settori più adatti a tale contesto, e culmina nella selezione dei singoli titoli. L’uso del machine learning è inteso come supporto e non come base primaria, con l’obiettivo di ridurre il rischio di overfitting. Il tutto verrà realizzato in un ambiente di sviluppo compatibile con QuantConnect, scritto in Python.
 
