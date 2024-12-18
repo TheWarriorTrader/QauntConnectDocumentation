@@ -1,6 +1,5 @@
 from QuantConnect.Data.Custom.Fred import *
 from QuantConnect.Algorithm import QCAlgorithm
-from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import cross_val_score
 from sklearn.feature_selection import SelectKBest, f_regression
 from sklearn.linear_model import LinearRegression
@@ -24,7 +23,7 @@ class IntegratedInvestmentStrategy(QCAlgorithm):
         # Impostare il capitale iniziale
         self.SetCash(100000)
         # Sottoscrivere gli indicatori macroeconomici dal database FRED
-        self.AddData(Fred, "GDP")
+        self.AddEquity("SPY")
         self.AddData(Fred, "UNRATE")
         self.AddData(Fred, "CPIAUCSL")
         # Sottoscrivere indicatori macroeconomici aggiuntivi dal database FRED
@@ -192,7 +191,7 @@ class IntegratedInvestmentStrategy(QCAlgorithm):
 
     def MonitorMarketEvents(self):
         # Monitorare la volatilità del mercato o altri indicatori di rischio
-        spy_history = self.History("SPY", 30, Resolution.Daily)
+        spy_history = self.History(["SPY"], 30, Resolution.Daily)
         if not spy_history.empty:
             spy_returns = spy_history["close"].pct_change().dropna()
             market_volatility = spy_returns.std()
@@ -210,7 +209,7 @@ class IntegratedInvestmentStrategy(QCAlgorithm):
         """Rileva eventi di mercato significativi e anomalie"""
         try:
             # Ottenere i dati di mercato recenti
-            spy_history = self.History("SPY", self.correlationWindow, Resolution.Daily)
+            spy_history = self.History(["SPY"], self.correlationWindow, Resolution.Daily)
             if spy_history.empty:
                 return
 
@@ -382,7 +381,7 @@ class IntegratedInvestmentStrategy(QCAlgorithm):
                 if symbol in self.historicalDataCache:
                     history = self.historicalDataCache[symbol]
                 else:
-                    history = self.History(symbol, 252, Resolution.Daily)
+                    history = self.History([symbol], 252, Resolution.Daily)
                     self.historicalDataCache[symbol] = history
 
                 if not history.empty:
@@ -396,7 +395,7 @@ class IntegratedInvestmentStrategy(QCAlgorithm):
                     feature = [mean_return, volatility, pe_ratio, debt_equity]
                     features.append(feature)
                     # Utilizzare il rendimento futuro come target
-                    future_returns = self.History(symbol, 30, Resolution.Daily)['close'].pct_change().dropna()
+                    future_returns = self.History([symbol], 30, Resolution.Daily)['close'].pct_change().dropna()
                     target = future_returns.mean()
                     targets.append(target)
                     symbols.append(symbol)
@@ -430,7 +429,7 @@ class IntegratedInvestmentStrategy(QCAlgorithm):
                 if symbol in self.historicalDataCache:
                     history = self.historicalDataCache[symbol]
                 else:
-                    history = self.History(symbol, 252, Resolution.Daily)
+                    history = self.History([symbol], 252, Resolution.Daily)
                     self.historicalDataCache[symbol] = history
 
                 if not history.empty:
@@ -833,7 +832,7 @@ class IntegratedInvestmentStrategy(QCAlgorithm):
                 if sector_symbols:
                     sector_returns = pd.DataFrame()
                     for symbol in sector_symbols:
-                        history = self.History(symbol, 252, Resolution.Daily)
+                        history = self.History([symbol], 252, Resolution.Daily)
                         if not history.empty:
                             sector_returns[str(symbol)] = history['close'].pct_change()
                     
@@ -851,7 +850,7 @@ class IntegratedInvestmentStrategy(QCAlgorithm):
         """Monitora la liquidità dei titoli in portafoglio"""
         try:
             for symbol in self.Portfolio.Keys:
-                history = self.History(symbol, self.risk_params['min_liquidity_window'], Resolution.Daily)
+                history = self.History([symbol], self.risk_params['min_liquidity_window'], Resolution.Daily)
                 if not history.empty:
                     avg_volume = history['volume'].mean()
                     avg_price = history['close'].mean()
