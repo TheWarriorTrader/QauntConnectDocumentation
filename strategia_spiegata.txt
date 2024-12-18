@@ -1,0 +1,57 @@
+1. Visione d’Insieme e Obiettivo della Strategia
+La strategia mira a costruire un portafoglio azionario solido e dinamico, capace di adattarsi ai differenti regimi di mercato. Per raggiungere questo obiettivo, il processo inizia con la comprensione del contesto macroeconomico globale, prosegue nella scelta dei settori più adatti a tale contesto, e culmina nella selezione dei singoli titoli. L’uso del machine learning è inteso come supporto e non come base primaria, con l’obiettivo di ridurre il rischio di overfitting. Il tutto verrà realizzato in un ambiente di sviluppo compatibile con QuantConnect, scritto in Python.
+
+2. Analisi Macroeconomica
+La prima fase consiste nell’individuare il regime economico in cui si colloca il mercato.
+
+Origine dei Dati: Gli indicatori macroeconomici provengono dal database FRED integrato in QuantConnect, ma la scelta di quali utilizzare va effettuata in base a valutazioni approfondite e conoscenze specifiche di contesto.
+Logica di Analisi: Non ci si limita a osservare un singolo indicatore: si costruisce un profilo complessivo dell’ambiente macroeconomico prendendo in considerazione diversi parametri economici, guardando alla loro evoluzione temporale e al modo in cui si influenzano reciprocamente.
+Output: Al termine di questa fase, si definisce un quadro sullo stato dell’economia, stabilendo se il mercato si trova in espansione, contrazione, transizione o in un regime di elevata volatilità. Questo risultato guida le fasi successive.
+3. Analisi Settoriale Basata sul Contesto Economico
+Dopo aver compreso in che tipo di scenario macro ci si muove, si passa a selezionare i settori che possano beneficiare o mostrarsi resilienti in tale ambiente.
+
+Nessun Indicatore Predefinito: Non si definiscono a priori quali metriche settoriali utilizzare, ma le si scelgono in base alle conoscenze specialistiche e all’interpretazione delle condizioni macro. L’analisi può includere aspetti legati alla solidità finanziaria media del settore, alle prospettive di crescita aggregate, oppure alla sensibilità a determinati fattori economici.
+Risultato: Una volta integrati i dati macro con queste analisi, si selezionano i settori considerati più promettenti. Si crea così una lista ristretta di settori su cui focalizzare la ricerca di titoli.
+4. Selezione dei Titoli all’Interno dei Settori Identificati
+All’interno dei settori scelti, si analizzano i singoli titoli.
+
+Approccio Fondamentale Personalizzato:
+Non si parte da indicatori predefiniti, ma si utilizza un approccio fondato su valutazioni dell’andamento degli utili, della solidità finanziaria, dell’affidabilità delle prospettive future. Queste scelte vanno fatte in base a competenze specifiche, evitando di standardizzare metodi o metriche e lasciando piena libertà al ricercatore di mercato.
+Revisione delle Aspettative e Robustezza del Bilancio:
+Si possono valutare i trend delle aspettative sugli utili, la qualità del management, la struttura dei costi, la leva finanziaria e ogni altro elemento fondamentale che si ritenga rilevante.
+Ruolo del Machine Learning:
+Una volta ottenuti i dati fondamentali e contestualizzati macroeconomicamente, il machine learning interviene come strumento di supporto. Il suo compito è affinare le stime di crescita e di rischio, confermando o mettendo in dubbio alcune ipotesi. Questo approccio riduce il pericolo di costruire modelli eccessivamente adattati al passato.
+Risultato: Si ottiene una lista di titoli che si suppone offrano un buon equilibrio tra rendimento atteso e solidità, coerenti con il contesto macro e settoriale.
+5. Predizione dei Ritorni Attesi e Ottimizzazione del Portafoglio
+A questo punto, si integrano le stime sui titoli selezionati per creare un portafoglio.
+
+Allocazione e Fattori di Rischio:
+Il processo di ottimizzazione tiene conto della dinamica tra i titoli, non in termini di semplici correlazioni storiche dei prezzi, ma valutando come ognuno potrebbe reagire a variazioni di parametri macro o settoriali.
+Nessun Set di Regole Statiche:
+Non si indica un modello rigido per l’allocazione: la scelta dei fattori di rischio, delle metriche di diverisificazione e del bilanciamento tra titoli è lasciata alla sensibilità dell’analista, che conosce le condizioni macro e i titoli prescelti.
+Obiettivo dell’Ottimizzazione:
+Ottenere un portafoglio che presenti un’adeguata diversificazione, riduca al minimo l’esposizione a shock indesiderati e massimizzi il potenziale di rendimento coerentemente con lo scenario economico e la selezione settoriale effettuata.
+6. Gestione Dinamica e Monitoraggio Continuo
+La strategia non è statica:
+
+Aggiornamenti Periodici:
+L’intero processo, dall’analisi macro alla selezione dei titoli, va ripetuto a intervalli regolari per riflettere le nuove informazioni disponibili. Gli eventi inattesi (ad esempio, shock economici) richiedono interventi urgenti per adeguare la composizione del portafoglio.
+Controllo dei Parametri Chiave:
+Monitoraggio costante degli indicatori macro scelti dal database FRED e delle variabili fondamentali dei titoli in portafoglio. L’obiettivo è captare eventuali cambiamenti di scenario e intervenire tempestivamente.
+7. Implementazione in Ambiente QuantConnect
+La strategia sarà implementata in Python e resa compatibile con QuantConnect.
+
+Approccio Tecnico Generale:
+Non si dettano vincoli specifici su quali funzioni o librerie utilizzare, lasciando che l’implementazione sia guidata dall’esperienza e dalle necessità dello sviluppatore. L’importante è che il codice possa sfruttare i dataset macro di FRED, i dati fondamentali messi a disposizione e i tool di analisi quantitativa e machine learning integrabili in QuantConnect.
+Flessibilità di Sviluppo:
+L’obiettivo è fornire un framework logico chiaro, così che lo sviluppatore, forte della propria competenza, possa scegliere la configurazione tecnica (modelli, parametri, metriche) più adatta. L’approccio consente di mantenere la strategia fortemente personalizzabile ed evolutiva.
+Risultato Finale
+Caro Giorgio, questa strategia delinea un percorso chiaro:
+
+Comprendere il contesto macroeconomico attraverso i dati FRED, selezionati ad hoc.
+Identificare i settori coerenti con tale contesto.
+Scegliere i titoli di quei settori sulla base di valutazioni fondamentali e dell’equilibrio tra potenziale di crescita e robustezza finanziaria.
+Sfruttare il machine learning come strumento di affinamento e non come motore principale, per evitare overfitting.
+Ottimizzare la composizione del portafoglio considerandone la solidità nei vari scenari futuri.
+Mantenere una gestione dinamica, aggiornata e reattiva.
+Il risultato è un approccio di investimento integrato, flessibile e razionale, che lascia ampio spazio alla competenza dello sviluppatore nella scelta dei dati, degli algoritmi e dei criteri di valutazione, garantendo così una strategia robusta, sostenuta da logiche coerenti e da un flusso di lavoro ben definito.
