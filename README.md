@@ -10,6 +10,9 @@ Contributors of accepted pull requests will receive a 2 month free Prime subscri
 
 Lean Engine is an open source fully-managed C# algorithmic trading engine built for desktop and cloud usage. It was designed in Mono and operates on Windows, Linux, and Mac platforms. For more information about the LEAN Algorithmic Trading engine, see the [Lean Engine Repository][6].
 
+## Objective of Structuring the Strategy
+
+The objective is to structure the strategy as described in `strategia_spiegata.txt` and `knowledge_base.md`. This involves understanding the macroeconomic context, selecting sectors that align with that context, and choosing individual stocks based on fundamental analysis. Machine learning is used as a support tool to refine estimates and reduce the risk of overfitting. The entire approach is developed in Python and integrated with QuantConnect.
 
 ## New Documentation Requests and Edits ##
 

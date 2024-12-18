@@ -80,3 +80,30 @@ Dovrai:
 8. Sviluppare l’intero codice in Python, integrato con QuantConnect, senza vincoli su librerie o modelli, a patto che l’implementazione sia coerente e completa.
 
 In altre parole, tu devi realizzare un’implementazione pratica e integrata dell’intera logica descritta in questo documento.
+
+## Riferimenti al Codice
+
+### 1. Visione d’Insieme e Obiettivo della Strategia
+- [main.py - Initialize()](main.py#L10)
+
+### 2. Analisi Macroeconomica
+- [main.py - AnalyzeMacroeconomicData()](main.py#L210)
+- [main.py - OnData()](main.py#L110)
+
+### 3. Analisi Settoriale Basata sul Contesto Economico
+- [main.py - SelectSectors()](main.py#L240)
+
+### 4. Selezione dei Titoli all’Interno dei Settori Identificati
+- [main.py - CoarseSelectionFunction()](main.py#L300)
+- [main.py - FineSelectionFunction()](main.py#L310)
+
+### 5. Predizione dei Ritorni Attesi e Ottimizzazione del Portafoglio
+- [main.py - ApplyMachineLearning()](main.py#L370)
+- [main.py - OptimizePortfolio()](main.py#L400)
+
+### 6. Gestione Dinamica e Monitoraggio Continuo
+- [main.py - RebalancePortfolio()](main.py#L490)
+- [main.py - TrackPerformance()](main.py#L520)
+
+### 7. Implementazione in Ambiente QuantConnect
+- [main.py - Initialize()](main.py#L10)
